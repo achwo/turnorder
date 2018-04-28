@@ -1,0 +1,25 @@
+body {
+  background: green;
+}
+#wrapper {
+  width: 360px;
+  height: 360px;
+  display: flex;
+  flex-direction: column-reverse;
+}
+.playmat {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.card-place {
+  padding: 2px;
+  width: 160px;
+  height: 240px;
+  border: 1px solid lightgreen;
+  border-radius: 10px;
+
+  display: flex;
+  justify-content: center;
+
+}
