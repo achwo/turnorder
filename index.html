@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Try Drag and Drop</title>
+    <script type="text/javascript">
+      function dragstart_handler(ev) {
+        console.log(ev);
+        ev.dataTransfer.setData("text/plain", ev.target.id);
+//        ev.dataTransfer.setData("text/html", "<p>Example paragraph</p>");
+//        ev.dataTransfer.setData("text/uri-list", "http://developer.mozilla.org");
+//        ev.dataTransfer.dropEffect = "link";
+      }
+
+      function dragover_handler(ev) {
+        ev.preventDefault();
+        ev.dataTransfer.dropEffect = "move";
+      }
+
+      function drop_handler(ev) {
+        var data = ev.dataTransfer.getData("text");
+        console.log(data);
+        ev.target.appendChild(document.getElementById(data));
+
+      }
+
+    </script>
+    <style type="text/css">
+      body {
+        background: green;
+      }
+      #wrapper {
+        width: 360px;
+        height: 360px;
+        display: flex;
+        flex-direction: column-reverse;
+      }
+      .playmat {
+        display: flex;
+        justify-content: space-evenly;
+      }
+
+      .card-place {
+        padding: 2px;
+        width: 160px;
+        height: 240px;
+        border: 1px solid lightgreen;
+        border-radius: 10px;
+
+        display: flex;
+        justify-content: center;
+
+      }
+    </style>
+  </head>
+  <body>
+    <div id=wrapper>
+      <div class="playmat">
+        <div id="stack" class="card-place" ondrop="drop_handler(event);" ondragover="dragover_handler(event);">
+            <img id="card1" draggable="true" ondragstart="dragstart_handler(event)" src="card1.svg">
+        </div>
+
+        <div id="discard" class="card-place" ondrop="drop_handler(event);" ondragover="dragover_handler(event);">
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
