@@ -14,22 +14,42 @@ function drop_handler(ev) {
     return;
   }
 
-  let data = ev.dataTransfer.getData("text");
+  const data = ev.dataTransfer.getData("text");
+  const element = document.getElementById(data)
 
   if(target.classList.contains('card')) {
-    target.parentNode.appendChild(document.getElementById(data));
+    target.parentNode.appendChild(element);
   } else {
-    target.appendChild(document.getElementById(data));
+    target.appendChild(element);
   }
+
+  calculateOffset(element.parentNode);
 }
 
+function calculateOffset(stack) {
+  const siblings = stack.children;
+
+  const inc = -3;
+  let margin = 0;
+  for (let el of siblings) {
+    let marginTop = 'margin-top: ' + margin + 'px;';
+    el.style = marginTop;
+    margin += inc;
+  }
+}
 
 function initialize() {
-  var list = document.getElementsByClassName("drop");
-  for (var item of list) {
-    item.addEventListener('drop', drop_handler);
-    item.addEventListener('dragover', dragover_handler);
+  var dropzones = document.getElementsByClassName("drop");
+  bindDropHandlers(dropzones, drop_handler, dragover_handler);
+  for (var stack of dropzones) {
+    calculateOffset(stack);
   }
 }
 
+function bindDropHandlers(list, dropHandler, dragoverHandler) {
+  for (var item of list) {
+    item.addEventListener('drop', dropHandler);
+    item.addEventListener('dragover', dragoverHandler);
+  }
+}
 initialize();
