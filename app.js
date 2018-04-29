@@ -23,3 +23,13 @@ function drop_handler(ev) {
   }
 }
 
+
+function initialize() {
+  var list = document.getElementsByClassName("drop");
+  for (var item of list) {
+    item.addEventListener('drop', drop_handler);
+    item.addEventListener('dragover', dragover_handler);
+  }
+}
+
+initialize();

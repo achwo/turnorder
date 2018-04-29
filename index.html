@@ -9,10 +9,7 @@
   <body>
     <div id=wrapper>
       <div class="playmat">
-        <div id="stack"
-          class="card-place"
-          ondrop="drop_handler(event);"
-          ondragover="dragover_handler(event);">
+        <div id="stack" class="card-place drop">
 
             <img id="card1"
                  class="card"
@@ -26,10 +23,7 @@
                  ondragstart="dragstart_handler(event)">
         </div>
 
-        <div id="discard"
-          class="card-place"
-          ondrop="drop_handler(event);"
-          ondragover="dragover_handler(event);"></div>
+        <div id="discard" class="card-place drop"></div>
       </div>
     </div>
   </body>
