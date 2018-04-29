@@ -1,3 +1,7 @@
+* {
+  padding: 0;
+  margin: 0;
+}
 body {
   background: green;
 }
@@ -22,4 +26,9 @@ body {
   display: flex;
   justify-content: center;
 
+}
+
+.card {
+  transition-duration: 0.2s;
+  transform: translate(0, 0);
 }

@@ -1,5 +1,4 @@
 function dragstart_handler(ev) {
-  console.log(ev);
   ev.dataTransfer.setData("text/plain", ev.target.id);
 }
 
@@ -9,8 +8,18 @@ function dragover_handler(ev) {
 }
 
 function drop_handler(ev) {
-  var data = ev.dataTransfer.getData("text");
-  console.log(data);
-  ev.target.appendChild(document.getElementById(data));
+  const allowedPlaces = ['card-place', 'card'];
+  let target = ev.target;
+  if (!allowedPlaces.some(cls => target.classList.contains(cls))) {
+    return;
+  }
+
+  let data = ev.dataTransfer.getData("text");
+
+  if(target.classList.contains('card')) {
+    target.parentNode.appendChild(document.getElementById(data));
+  } else {
+    target.appendChild(document.getElementById(data));
+  }
 }
 
