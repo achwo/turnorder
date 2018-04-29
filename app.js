@@ -38,11 +38,31 @@ function calculateOffset(stack) {
   }
 }
 
+function addCard(name, target) {
+  const card = document.createElement('img');
+
+  card.setAttribute('id', name);
+  card.setAttribute('src', 'assets/' + name + '.svg');
+  card.setAttribute('class', 'card');
+
+  card.setAttribute('draggable', 'true');
+  card.addEventListener('dragstart', dragstart_handler);
+
+  target.appendChild(card);
+}
+
 function initialize() {
   var dropzones = document.getElementsByClassName("drop");
   bindDropHandlers(dropzones, drop_handler, dragover_handler);
-  for (var stack of dropzones) {
-    calculateOffset(stack);
+
+  const stack = document.getElementById('stack');
+  const cards = ['card1', 'card2', 'card3', 'cardwild', 'cardnemesis'];
+  for (card of cards) {
+    addCard(card, stack);
+  }
+
+  for (var cardPlace of dropzones) {
+    calculateOffset(cardPlace);
   }
 }
 
