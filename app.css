@@ -6,14 +6,13 @@ body {
   background: green;
 }
 #wrapper {
-  width: 360px;
-  height: 360px;
+  margin-top: 20px;
   display: flex;
   flex-direction: column-reverse;
 }
 .playmat {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
 }
 
 .card-place {
@@ -22,10 +21,8 @@ body {
   height: 240px;
   border: 1px solid lightgreen;
   border-radius: 10px;
-
   display: flex;
-  justify-content: center;
-
+  margin: 5px;
 }
 
 .card {

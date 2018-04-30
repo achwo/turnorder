@@ -1,3 +1,15 @@
+'use strict';
+
+function Card(name, file) {
+  this.name = name;
+  this.file = file;
+  this.open = false;
+}
+
+Card.prototype.flip = function ( open ) {
+  this.open = open;
+}
+
 function dragstart_handler(ev) {
   ev.dataTransfer.setData("text/plain", ev.target.id);
 }
@@ -38,17 +50,17 @@ function calculateOffset(stack) {
   }
 }
 
-function addCard(name, target) {
-  const card = document.createElement('img');
+function addCard(card, target) {
+  const cardEl = document.createElement('img');
 
-  card.setAttribute('id', name);
-  card.setAttribute('src', 'assets/' + name + '.svg');
-  card.setAttribute('class', 'card');
+  cardEl.setAttribute('id', card.name);
+  cardEl.setAttribute('src', 'assets/' + card.file);
+  cardEl.setAttribute('class', 'card');
 
-  card.setAttribute('draggable', 'true');
-  card.addEventListener('dragstart', dragstart_handler);
+  cardEl.setAttribute('draggable', 'true');
+  cardEl.addEventListener('dragstart', dragstart_handler);
 
-  target.appendChild(card);
+  target.appendChild(cardEl);
 }
 
 function initialize() {
@@ -56,12 +68,20 @@ function initialize() {
   bindDropHandlers(dropzones, drop_handler, dragover_handler);
 
   const stack = document.getElementById('stack');
-  const cards = ['card1', 'card2', 'card3', 'cardwild', 'cardnemesis'];
-  for (card of cards) {
+  const cards = [
+    new Card('card1', 'card1.svg'),
+    new Card('card2', 'card2.svg'),
+    new Card('card3', 'card3.svg'),
+    new Card('cardwild', 'cardwild.svg'),
+    new Card('cardnemesis1', 'cardnemesis.svg'),
+    new Card('cardnemesis2', 'cardnemesis.svg')
+  ];
+
+  for (let card of cards) {
     addCard(card, stack);
   }
 
-  for (var cardPlace of dropzones) {
+  for (let cardPlace of dropzones) {
     calculateOffset(cardPlace);
   }
 }
