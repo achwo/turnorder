@@ -13,8 +13,7 @@
 - add more icons
 - fix theme and background colors
 - JS module
-- mobile first design
-- drag & drop on mobile
+- control on mobile
 - flip cards
 - shuffling
 - click to draw a card
