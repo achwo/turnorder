@@ -13,11 +13,13 @@ body {
 .playmat {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
 }
 
 .card-place {
   padding: 2px;
   width: 160px;
+  min-width: 160px;
   height: 240px;
   border: 1px solid lightgreen;
   border-radius: 10px;
