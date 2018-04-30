@@ -1,0 +1,16 @@
+{
+  "name": "Turnorder Web App",
+  "short_name": "turnorder",
+  "description": "An online implementation of Aeons Ends turnorder deck",
+  "icons": [
+    {
+      "src": "icons/icon-32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "/turnorder/index.html",
+  "display": "fullscreen",
+  "theme_color": "#B12A34",
+  "background_color": "#B12A34"
+}

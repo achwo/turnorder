@@ -3,15 +3,31 @@
   <head>
     <meta charset="utf-8">
     <title>Turnorder deck</title>
-    <script src="app.js" type="text/javascript" defer></script>
-    <link rel="stylesheet" href="app.css" type="text/css" media="screen" charset="utf-8">
+    <meta name="description" content="An online implementation of the aeons end turnorder deck.">
+    <meta name="author" content="felix">
+    <meta name="theme-color" content="#B12A34">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--    <meta property="og:image" content="icons/icon-512.png"> -->
+    <script src="data/cards.js" defer></script>
+    <script src="app.js" defer></script>
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="stylesheet" href="app.css">
+    <link rel="manifest" href="turnorder.webmanifest">
   </head>
   <body>
+    <header>
+
+    </header>
+    <main>
     <div id=wrapper>
       <div class="playmat">
         <div id="stack" class="card-place drop"></div>
         <div id="discard" class="card-place drop"></div>
       </div>
     </div>
+    </main>
+    <footer>
+      <p>© 2018 Felix Jensen</p>
+    </footer>
   </body>
 </html>

@@ -1,0 +1,25 @@
+{
+  "name": "turnorder",
+  "version": "1.0.0",
+  "description": "An online implementation of Aeons Ends turnorder deck.",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.16.3"
+  },
+  "devDependencies": {
+    "express.js": "^1.0.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/felixjensen/turnorder.git"
+  },
+  "author": "Felix Jensen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/felixjensen/turnorder/issues"
+  },
+  "homepage": "https://github.com/felixjensen/turnorder#readme"
+}

@@ -1,8 +1,17 @@
 # Turnorder
 
+## Install
+
+`npm install`
+
+## Run locally
+
+`node index.js`
 
 ## Todo
 
+- add more icons
+- fix theme and background colors
 - JS module
 - mobile first design
 - drag & drop on mobile
