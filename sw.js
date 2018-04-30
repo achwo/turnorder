@@ -16,7 +16,6 @@ for (var i = 0; i < cards.length; i++) {
 
 var contentToCache = appShellFiles.concat(cardsImages);
 
-
 // Install serviceWorker
 self.addEventListener('install', function(e) {
   console.log('[Service Worker] Install');
@@ -43,6 +42,20 @@ self.addEventListener('fetch', function(e) {
           return response;
         });
       });
+    })
+  );
+});
+
+
+// clear old caches
+self.addEventListener('activate', function(e) {
+  e.waitUntil(
+    caches.keys().then(function(keyList) {
+      return Promise.all(keyList.map(function(key) {
+        if(cacheName.indexOf(key === -1)) {
+          return caches.delete(key);
+        }
+      }));
     })
   );
 });
