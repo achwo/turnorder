@@ -33,3 +33,7 @@ body {
 .card-place .card {
   position: absolute;
 }
+
+footer {
+  display: none;
+}

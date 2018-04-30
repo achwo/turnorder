@@ -54,7 +54,7 @@ function addCard(card, target) {
   const cardEl = document.createElement('img');
 
   cardEl.setAttribute('id', card.name);
-  cardEl.setAttribute('src', 'assets/' + card.file);
+  cardEl.setAttribute('src', 'data/img/' + card.file);
   cardEl.setAttribute('class', 'card');
 
   cardEl.setAttribute('draggable', 'true');
@@ -63,19 +63,11 @@ function addCard(card, target) {
   target.appendChild(cardEl);
 }
 
-function initialize() {
+function initialize(cards) {
   var dropzones = document.getElementsByClassName("drop");
   bindDropHandlers(dropzones, drop_handler, dragover_handler);
 
   const stack = document.getElementById('stack');
-  const cards = [
-    new Card('card1', 'card1.svg'),
-    new Card('card2', 'card2.svg'),
-    new Card('card3', 'card3.svg'),
-    new Card('cardwild', 'cardwild.svg'),
-    new Card('cardnemesis1', 'cardnemesis.svg'),
-    new Card('cardnemesis2', 'cardnemesis.svg')
-  ];
 
   for (let card of cards) {
     addCard(card, stack);
@@ -83,6 +75,10 @@ function initialize() {
 
   for (let cardPlace of dropzones) {
     calculateOffset(cardPlace);
+  }
+
+  if ( 'serviceWorker' in navigator ) {
+    navigator.serviceWorker.register('/turnorder/sw.js');
   }
 }
 
@@ -92,4 +88,4 @@ function bindDropHandlers(list, dropHandler, dragoverHandler) {
     item.addEventListener('dragover', dragoverHandler);
   }
 }
-initialize();
+initialize(cards);

@@ -1,5 +1,12 @@
 # Turnorder
 
+## Install
+
+`npm install`
+
+## Run locally
+
+`node index.js`
 
 ## Todo
 
