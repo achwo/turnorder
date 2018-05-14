@@ -8,6 +8,10 @@
 
 `node index.js`
 
+## Run tests
+
+`node_modules/karma/bin/karma start`
+
 ## Todo
 
 - control on mobile
