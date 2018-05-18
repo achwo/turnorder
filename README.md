@@ -10,7 +10,7 @@
 
 ## Run tests
 
-`node_modules/karma/bin/karma start`
+`npm test`
 
 ## Todo
 

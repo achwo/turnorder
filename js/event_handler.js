@@ -1,8 +1,10 @@
 'use strict';
-const eventHandlerGen = (ruleBook) => {
+const eventHandlerGen = (ruleBook, renderer) => {
   return {
-    dispatch: (ev) => {
-      return ruleBook.handle(ev.rule, ev.payload)
+    dispatch: (state, ev) => {
+      const newState = ruleBook.handle(state, ev.rule, ev.payload);
+      renderer.render(state);
+      return newState;
     },
   }
 };

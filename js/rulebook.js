@@ -11,8 +11,11 @@ const ruleBookGen = function () {
     create: function () {
       const _rules = this._actions;
       return {
-        handle: function (name) {
-          return _rules[name]();
+        handle: function (state, name, payload) {
+          if (_rules[name] === undefined) {
+            throw 'Rule \'' + name + '\' does not exist!';
+          }
+          return _rules[name](state, payload);
         }
       };
     }
