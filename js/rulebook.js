@@ -21,3 +21,5 @@ const ruleBookGen = function () {
     }
   };
 }
+
+module.exports = ruleBookGen;

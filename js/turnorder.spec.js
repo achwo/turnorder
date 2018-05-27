@@ -1,18 +1,25 @@
+const turnOrderGen = require('./turnorder');
+const eventHandlerGen = require('./event_handler');
+const ruleBookGen = require('./rulebook');
+const rendererGen = require('./renderer');
+
 describe('turnorder', () => {
   let turnOrder;
   beforeEach(() => {
-    turnOrder = turnOrderGen(eventHandlerGen, ruleBookGen, () => 0.1);
+    turnOrder = turnOrderGen(eventHandlerGen, ruleBookGen, rendererGen, () => 0.1);
   });
 
   it('adds a rule for drawing from the draw pile', () => {
     expect(typeof turnOrder.handle(
-      { drawPile: [], discardPile: []},
+      { drawPile: ['1'], discardPile: []},
       {rule: 'draw from drawpile'})
     ).toBe('object');
   });
 
   it('adds a rule for setting up the turnorder deck', () => {
-    expect(typeof turnOrder.handle({}, {rule: 'setup'})).toBe('object');
+    expect(typeof turnOrder.handle(
+      { drawPile: ['1'], discardPile: []},
+      {rule: 'setup'})).toBe('object');
   });
 
   it('adds a rule for shuffling the deck', () => {
@@ -24,7 +31,9 @@ describe('turnorder', () => {
 
   describe('setup', () => {
     it('creates an initial state', () => {
-      const state = turnOrder.handle({}, {rule: 'setup'});
+      const state = turnOrder.handle(
+        { drawPile: [], discardPile: []},
+        {rule: 'setup'});
 
       expect(state.drawPile.length).toBe(6);
       expect(state.discardPile.length).toBe(0);

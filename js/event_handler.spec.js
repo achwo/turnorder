@@ -1,3 +1,6 @@
+const ruleBookGen = require('./rulebook');
+const eventHandlerGen = require('./event_handler');
+
 describe('eventHandlerGen', () => {
   it('generates an eventHandler', () => {
     const eventHandler = eventHandlerGen({});

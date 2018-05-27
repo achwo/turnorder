@@ -8,3 +8,5 @@ const eventHandlerGen = (ruleBook, renderer) => {
     },
   }
 };
+
+module.exports = eventHandlerGen;

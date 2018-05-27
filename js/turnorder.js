@@ -1,14 +1,14 @@
 'use strict';
 
-const turnOrderGen = function (eventHandlerGen, ruleBookGen, random) {
+const turnOrderGen = function (eventHandlerGen, ruleBookGen, rendererGen, random) {
   const INITIAL_STATE = {
     drawPile: ['1', '2', '3', 'wild', 'nemesis', 'nemesis'],
     discardPile: []
   };
 
   function shuffle(a) {
-    var j, x, i;
-    for (i = a.length - 1; i > 0; i--) {
+    let j, x;
+    for (let i = a.length - 1; i > 0; i--) {
         j = Math.floor(random() * (i + 1));
         x = a[i];
         a[i] = a[j];
@@ -55,3 +55,5 @@ const turnOrderGen = function (eventHandlerGen, ruleBookGen, random) {
     }
   };
 };
+
+module.exports = turnOrderGen;

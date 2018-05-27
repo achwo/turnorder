@@ -1,3 +1,4 @@
+const ruleBookGen = require('./rulebook');
 describe('ruleBookGen', () => {
   it('creates a ruleBook with actions', () => {
     const ruleBook = ruleBookGen()
