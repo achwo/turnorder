@@ -2,8 +2,8 @@
 
 const turnOrderGen = function (eventHandlerGen, ruleBookGen, rendererGen, random) {
   const INITIAL_STATE = {
-    drawPile: ['1', '2', '3', 'wild', 'nemesis1', 'nemesis2'],
-    discardPile: []
+    drawPile: [],
+    discardPile: ['1', '2', '3', 'wild', 'nemesis1', 'nemesis2']
   };
 
   function shuffle(a) {
@@ -19,11 +19,13 @@ const turnOrderGen = function (eventHandlerGen, ruleBookGen, rendererGen, random
 
   const ruleBook = ruleBookGen()
     .action('setup', (_) => {
-      return INITIAL_STATE;
+      console.log('setup initial state', INITIAL_STATE);
+      return eventHandler.dispatch(INITIAL_STATE, {rule: 'shuffle'});
+     // return INITIAL_STATE;
     })
     .action('draw from drawpile', (state) => {
       if ( state.drawPile.length === 0 ) {
-        state = eventHandler.dispatch(state, {rule: 'shuffle'});
+        return eventHandler.dispatch(state, {rule: 'shuffle'});
       }
       const card = state.drawPile.pop();
       const newDiscard = state.discardPile;
@@ -36,6 +38,7 @@ const turnOrderGen = function (eventHandlerGen, ruleBookGen, rendererGen, random
       return newState;
     })
     .action('shuffle', (state) => {
+      console.log('shuffle state', state);
       const discardPile = state.discardPile;
       shuffle(discardPile);
 

@@ -12,6 +12,7 @@ const eventHandlerGen = (ruleBook, renderer) => {
     dispatch: function (state, ev) {
       console.log('eventHandler.dispatch', state, ev);
       const newState = ruleBook.handle(state, ev.rule, ev.payload);
+      console.log('old state', state);
       console.log('new state', newState);
       renderer.render(newState, this.handleGen.bind(this));
       return newState;
