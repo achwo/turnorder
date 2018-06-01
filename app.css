@@ -33,7 +33,7 @@ body {
 .clickable {
   cursor: pointer;
   user-select: none;
-
+  touch-action: manipulation;
 }
 
 .card {
