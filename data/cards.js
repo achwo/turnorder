@@ -1,4 +1,4 @@
-var cards = [
+const cards = [
   {
     name: 'card1',
     file: 'card1.svg'
