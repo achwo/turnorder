@@ -20,13 +20,17 @@ describe('eventHandler', () => {
       this.called = true;
       this.rule = rule;
       this.payload = payload;
+
+      return state;
     }
   };
 
   const renderer = {
     state: null,
-    render: function(state) {
+    handleGenFn: null,
+    render: function(state, handleGenFn) {
       this.state = state;
+      this.handleGenFn = handleGenFn;
     }
   };
 
@@ -36,6 +40,7 @@ describe('eventHandler', () => {
     ruleBook.rule = null;
     ruleBook.payload = null;
     renderer.state = null;
+    renderer.handleGenFn = null;
   });
 
   it('dispatches events to the RuleBook', () => {
