@@ -28,27 +28,74 @@ const rendererGen = () => {
     },
   };
 
-  function renderPile(cards, pileEl) {
+  function renderPile(cards, pileEl, clickHandler) {
+    clearPile(pileEl);
     for (let card of cards) {
-      createCardEl(cardMap[card], pileEl);
+      let cardEl = createCardEl(cardMap[card]);
+      renderCardEl(pileEl, cardEl);
     }
-
-
+    offsetCardsInPile(pileEl);
   }
 
-  function createCardEl(card, target) {
+  function clearPile(pileEl) {
+    pileEl.innerHTML = '';
+  }
+
+  function createCardEl(card) {
     const cardEl = document.createElement('img');
 
     cardEl.setAttribute('id', card.name);
     cardEl.setAttribute('src', 'data/img/' + card.file);
     cardEl.setAttribute('class', 'card');
     cardEl.setAttribute('alt', card.name);
+
+    return cardEl;
+  }
+
+  function offsetCardsInPile(pileEl) {
+    const cardEls = pileEl.children;
+
+    const inc = -3;
+    let margin = 0;
+
+    for (let el of cardEls) {
+      el.style = 'margin-top: ' + margin + 'px;';
+      margin += inc;
+    }
+  }
+
+  function renderCardEl(targetEl, cardEl) {
+    targetEl.appendChild(cardEl);
+  }
+
+  function clearElHandlers(el) {
+    const clone = el.cloneNode(true);
+    el.parentNode.replaceChild(clone, el);
+
+    return clone;
+  }
+
+  function setEventHandler(el, handleFn) {
+    let action;
+
+    if (el.innerHTML === '') {
+      action = handleFn({rule: 'shuffle'});
+    } else {
+      action = handleFn({rule: 'draw from drawpile'});
+    }
+
+    el.addEventListener('click', action);
   }
 
   return {
-    render: (state) => {
-      const drawPileEl = document.getElementById('draw');
+    render: (state, handleGenFn) => {
+      const drawPileEl = clearElHandlers(document.getElementById('draw'));
+      const discardPileEl = document.getElementById('discard');
+      const handleFn = handleGenFn(state);
+      console.log('render state', state);
       renderPile(state.drawPile, drawPileEl);
+      renderPile(state.discardPile, discardPileEl);
+      setEventHandler(drawPileEl, handleFn);
     },
   }
 };

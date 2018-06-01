@@ -8,7 +8,13 @@
     <meta name="theme-color" content="#B12A34">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--    <meta property="og:image" content="icons/icon-512.png"> -->
+    <script>
+      module = {};
+    </script>
     <script src="data/cards.js" defer></script>
+    <script src="js/event_handler.js" defer></script>
+    <script src="js/renderer.js" defer></script>
+    <script src="js/ruleBook.js" defer></script>
     <script src="js/turnorder.js" defer></script>
     <script src="app.js" defer></script>
     <link rel="shortcut icon" href="favicon.ico">
@@ -22,8 +28,8 @@
     <main>
     <div id=wrapper>
       <div class="playmat">
-        <div id="draw" class="card-place drop"></div>
-        <div id="discard" class="card-place drop"></div>
+        <div id="draw" class="card-place clickable"></div>
+        <div id="discard" class="card-place"></div>
       </div>
     </div>
     </main>

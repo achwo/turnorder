@@ -17,4 +17,10 @@ function initialize(cards) {
   }
 }
 
-initialize(cards);
+function newInit() {
+  const turnOrder = turnOrderGen(eventHandlerGen, ruleBookGen, rendererGen, Math.random);
+  turnOrder.init();
+
+}
+//initialize(cards);
+newInit();

@@ -2,14 +2,17 @@
   padding: 0;
   margin: 0;
 }
+
 body {
   background: green;
 }
+
 #wrapper {
   margin-top: 20px;
   display: flex;
   flex-direction: column-reverse;
 }
+
 .playmat {
   display: flex;
   justify-content: center;
@@ -25,6 +28,12 @@ body {
   border-radius: 10px;
   display: flex;
   margin: 5px;
+}
+
+.clickable {
+  cursor: pointer;
+  user-select: none;
+
 }
 
 .card {
