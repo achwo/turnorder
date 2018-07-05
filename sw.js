@@ -5,9 +5,8 @@ var appShellFiles = [
   '/turnorder/app.css',
   '/turnorder/app.js',
   '/turnorder/index.html',
-  '/turnorder/sw.js',
+  '/turnorder/sw.js'
 ];
-
 
 var cardsImages = [];
 for (var i = 0; i < cards.length; i++) {
@@ -25,32 +24,35 @@ self.addEventListener('install', function(e) {
   );
 });
 
-
 // Fetching content using Service Worker
 self.addEventListener('fetch', function(e) {
   e.respondWith(
     caches.match(e.request).then(function(r) {
-      return r || fetch(e.request).then(function(response) {
-        return caches.open(cacheName).then(function(cache) {
-          cache.put(e.request, response.clone());
+      return (
+        r ||
+        fetch(e.request).then(function(response) {
+          return caches.open(cacheName).then(function(cache) {
+            cache.put(e.request, response.clone());
 
-          return response;
-        });
-      });
+            return response;
+          });
+        })
+      );
     })
   );
 });
-
 
 // clear old caches
 self.addEventListener('activate', function(e) {
   e.waitUntil(
     caches.keys().then(function(keyList) {
-      return Promise.all(keyList.map(function(key) {
-        if(cacheName.indexOf(key === -1)) {
-          return caches.delete(key);
-        }
-      }));
+      return Promise.all(
+        keyList.map(function(key) {
+          if (cacheName.indexOf(key === -1)) {
+            return caches.delete(key);
+          }
+        })
+      );
     })
   );
 });

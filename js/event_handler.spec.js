@@ -15,7 +15,7 @@ describe('eventHandler', () => {
     rule: null,
     payload: null,
 
-    handle: function (state, rule, payload) {
+    handle: function(state, rule, payload) {
       this.state = state;
       this.called = true;
       this.rule = rule;
@@ -65,5 +65,4 @@ describe('eventHandler', () => {
 
     expect(renderer.state).toBe('state');
   });
-
 });

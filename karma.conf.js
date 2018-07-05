@@ -4,13 +4,10 @@ module.exports = function(config) {
     customLaunchers: {
       FirefoxHeadless: {
         base: 'Firefox',
-        flags: [ '-headless' ],
-      },
+        flags: ['-headless']
+      }
     },
     frameworks: ['jasmine'],
-    files: [
-      'data/*.js',
-      'js/*.js'
-    ]
+    files: ['data/*.js', 'js/*.js']
   });
 };

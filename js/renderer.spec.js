@@ -19,6 +19,5 @@ describe('rendererGen', () => {
       };
       renderer.render(state, () => {});
     });
-
   });
 });

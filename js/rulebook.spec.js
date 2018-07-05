@@ -2,7 +2,7 @@ const ruleBookGen = require('./rulebook');
 describe('ruleBookGen', () => {
   it('creates a ruleBook with actions', () => {
     const ruleBook = ruleBookGen()
-      .action('actionName', (state) => 'action')
+      .action('actionName', state => 'action')
       .create();
 
     expect(ruleBook).toBeDefined();
@@ -12,8 +12,8 @@ describe('ruleBookGen', () => {
 
   it('allows to chain multiple action calls', () => {
     const ruleBook = ruleBookGen()
-      .action('action1', (state) => 'action')
-      .action('action2', (state) => 'action2')
+      .action('action1', state => 'action')
+      .action('action2', state => 'action2')
       .create();
 
     expect(ruleBook.handle({}, 'action1')).toBe('action');
@@ -23,6 +23,8 @@ describe('ruleBookGen', () => {
   it('throws exception if rule does not exist', () => {
     const ruleBook = ruleBookGen().create();
 
-    expect(() => ruleBook.handle({}, 'action1')).toThrow('Rule \'action1\' does not exist!');
+    expect(() => ruleBook.handle({}, 'action1')).toThrow(
+      "Rule 'action1' does not exist!"
+    );
   });
 });

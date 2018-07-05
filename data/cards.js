@@ -22,5 +22,5 @@ const cards = [
   {
     name: 'cardnemesis2',
     file: 'cardnemesis.svg'
-  },
+  }
 ];

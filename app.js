@@ -1,9 +1,9 @@
-if ( 'serviceWorker' in navigator ) {
+if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('/turnorder/sw.js');
 }
 
 function initialize(cards) {
-  var dropzones = document.getElementsByClassName("drop");
+  var dropzones = document.getElementsByClassName('drop');
   bindDropHandlers(dropzones, dropHandler, dragoverHandler);
 
   const stack = document.getElementById('draw');
@@ -18,9 +18,13 @@ function initialize(cards) {
 }
 
 function newInit() {
-  const turnOrder = turnOrderGen(eventHandlerGen, ruleBookGen, rendererGen, Math.random);
+  const turnOrder = turnOrderGen(
+    eventHandlerGen,
+    ruleBookGen,
+    rendererGen,
+    Math.random
+  );
   turnOrder.init();
-
 }
 //initialize(cards);
 newInit();

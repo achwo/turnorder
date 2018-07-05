@@ -17,21 +17,21 @@ const rendererGen = () => {
       file: 'card3.svg',
       back: 'cardback.svg'
     },
-    'wild': {
+    wild: {
       name: 'cardwild',
       file: 'cardwild.svg',
       back: 'cardback.svg'
     },
-    'nemesis1': {
+    nemesis1: {
       name: 'cardnemesis1',
       file: 'cardnemesis.svg',
       back: 'cardback.svg'
     },
-    'nemesis2': {
+    nemesis2: {
       name: 'cardnemesis2',
       file: 'cardnemesis.svg',
       back: 'cardback.svg'
-    },
+    }
   };
 
   function renderPile(cards, pileEl, open) {
@@ -93,9 +93,12 @@ const rendererGen = () => {
       console.log('render state', state);
       renderPile(state.drawPile, drawPileEl, false);
       renderPile(state.discardPile, discardPileEl, true);
-      drawPileEl.addEventListener('click', handleFn({rule: 'draw from drawpile'}));
-    },
-  }
+      drawPileEl.addEventListener(
+        'click',
+        handleFn({ rule: 'draw from drawpile' })
+      );
+    }
+  };
 };
 
 module.exports = rendererGen;
