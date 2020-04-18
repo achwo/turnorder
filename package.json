@@ -4,10 +4,10 @@
   "description": "An online implementation of Aeons Ends turnorder deck.",
   "main": "index.js",
   "devDependencies": {
-    "express": "^4.16.3",
+    "express": "^4.17.1",
     "express.js": "^1.0.0",
-    "jest": "^23.0.0",
-    "prettier": "1.13.7"
+    "jest": "^25.3.0",
+    "prettier": "2.0.4"
   },
   "scripts": {
     "start": "node index.js",
