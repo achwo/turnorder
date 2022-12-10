@@ -4,7 +4,7 @@
   "description": "An online implementation of Aeons Ends turnorder deck.",
   "main": "index.js",
   "devDependencies": {
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "express.js": "^1.0.0",
     "jest": "^25.3.0",
     "prettier": "2.0.4"
